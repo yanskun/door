@@ -33,6 +33,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { {{ inputs.value | pascal }} } from "./{{ inputs.value | kebab }}";
 
 const meta = {
+  args: {},
   title: "Components/{{ inputs.value | pascal }}",
   component: {{ inputs.value | pascal }},
   tags: ["autodocs"],
