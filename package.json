@@ -11,7 +11,8 @@
     "start": "remix-serve ./build/server/index.js",
     "typecheck": "tsc",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "gen:component": "scaffdog generate component"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -44,6 +45,7 @@
     "@types/react-dom": "18.3.0",
     "autoprefixer": "10.4.19",
     "postcss": "8.4.38",
+    "scaffdog": "4.1.0",
     "storybook": "8.3.5",
     "tailwindcss": "3.4.4",
     "typescript": "5.6.3",
