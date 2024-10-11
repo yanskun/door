@@ -1,11 +1,21 @@
+import { motion, AnimatePresence } from "framer-motion";
 type CardProps = {
   title: string;
   description: string;
+  open: boolean;
+  onClick: () => void;
 };
 
-export function Card({ title, description }: CardProps) {
+function CloseCard({ title, description, onClick }: CardProps) {
   return (
-    <div className="py-3 sm:py-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+    <motion.div
+      className="py-3 sm:py-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700"
+      onClick={onClick}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="flex items-center">
         <div className="flex-shrink-0">
           <input
@@ -39,6 +49,30 @@ export function Card({ title, description }: CardProps) {
           />
         </svg>
       </div>
-    </div>
+    </motion.div>
+  );
+}
+
+function OpenCard({ title, description, onClick }: CardProps) {
+  return (
+    <motion.div
+      className="py-3 sm:py-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      onClick={onClick}
+    >
+      <p>{title}</p>
+      <p>{description}</p>
+    </motion.div>
+  );
+}
+
+export function Card(props: CardProps) {
+  return (
+    <AnimatePresence>
+      {props.open ? <OpenCard {...props} /> : <CloseCard {...props} />}
+    </AnimatePresence>
   );
 }
