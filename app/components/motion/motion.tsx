@@ -37,6 +37,7 @@ export function Motion() {
         <div>
           <h2 className="text-xl font-bold">title</h2>
           <p>description</p>
+          <span className="i-lucide-cat" />
           <AnimatePresence>
             <motion.div
               className="text-sky-800"
