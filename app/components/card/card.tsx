@@ -1,7 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { useLayoutEffect, useRef, useState } from "react";
 type CardProps = {
   title: string;
   description: string;
+  duoDate: Date;
   open: boolean;
   onClick: () => void;
 };
@@ -69,10 +71,22 @@ function OpenCard({ title, description, onClick }: CardProps) {
   );
 }
 
-export function Card(props: CardProps) {
+const containerVariants = {
+  close: { height: 100 },
+  open: { height: 200 },
+};
+
+export function Card({ title, description, open, onClick }: CardProps) {
   return (
-    <AnimatePresence>
-      {props.open ? <OpenCard {...props} /> : <CloseCard {...props} />}
-    </AnimatePresence>
+    <motion.div
+      className="w-full border border-white rounded-2xl cursor-pointer"
+      initial={false}
+      animate={open ? "open" : "close"}
+      variants={containerVariants}
+      onClick={() => onClick()}
+    >
+      <p>{title}</p>
+      <p>{description}</p>
+    </motion.div>
   );
 }

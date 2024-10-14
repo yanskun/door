@@ -7,6 +7,7 @@ const meta = {
   args: {
     title: "Card title",
     description: "Card description",
+    duoDate: new Date("2022-01-01"),
     open: false,
     onClick: () => {},
   },
