@@ -1,5 +1,9 @@
 import type { Config } from "tailwindcss";
-import { iconsPlugin, getIconCollections } from "@egoist/tailwindcss-icons";
+import {
+  iconsPlugin,
+  getIconCollections,
+  dynamicIconsPlugin,
+} from "@egoist/tailwindcss-icons";
 
 export default {
   content: ["./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}"],
@@ -21,7 +25,8 @@ export default {
   },
   plugins: [
     iconsPlugin({
-      collections: getIconCollections(["mdi", "lucide"]),
+      collections: getIconCollections(["mdi", "lucide", "whh"]),
     }),
+    dynamicIconsPlugin(),
   ],
 } satisfies Config;
